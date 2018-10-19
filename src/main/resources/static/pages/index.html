@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-table.css" rel="stylesheet">
+<body>
+<!--<div id="toolbar">
+    <button id="button" class="btn btn-default">remove</button>
+</div>
+<table id="table"
+       data-toggle="table"
+       data-height="428"
+       data-toolbar="#toolbar"
+       data-pagination="true"
+       data-search="true"
+       data-url="/getUserList">
+    <thead>
+    <tr>
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id">Item ID</th>
+        <th data-field="phone" data-searchable="false">Item phone</th>
+        <th data-field="money" data-searchable="false">Item money</th>
+        <th data-field="hasdeposit" data-searchable="false">Item money</th>
+        <th data-field="Button" data-searchable="false">操-作</th>
+    </tr>
+    </thead>
+</table>-->
+<div id="toolbar">
+    <button id="button" class="btn btn-default" data-toggle="modal" data-target=".new-example-modal-sm">insertRow</button>
+</div>
+<table id="table"></table>
+
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>-->
+
+<div class="modal fade new-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新建用户</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <strong>电话</strong>
+                    <input type="text" class="form-control" id="user_newPhone"></input>
+                </div>
+                <div>
+                    <strong>余额</strong>
+                    <input type="text" class="form-control" id="user_newMoney"></input>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="newBtn"  onclick="newUser()" data-dismiss="modal">新建</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="opDataxJobRowModal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">警告</h4>
+            </div>
+            <div class="modal-body">
+                <strong id="warningText"></strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmBtn" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="opEdiRowModal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑用户</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <strong>电话</strong>
+                    <input type="text" class="form-control" id="user_phone"></input>
+                </div>
+                <div>
+                <strong>余额</strong>
+                <input type="text" class="form-control" id="user_money"></input>
+                </div>
+                <div>
+                <strong>押金</strong>
+                <!--<input type="text" class="form-control" id="user_hasDeposit"></input>-->
+                    <div>
+                    <label class="radio-inline">
+                        <input type="radio" class="myRadio" name="inlineRadioOptions" id="user_hasDeposit01" value="true"> true
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" class="myRadio" name="inlineRadioOptions" id="user_hasDeposit02" value="false"> false
+                    </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="ediBtn" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="../js/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript">
+    var $table = $('#table');
+    function AddFunctionAlty(value,row,index) {
+        return[
+            '    <button type="button" id="edi" type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">编辑</button>' +
+            '    <button id="del" type="button" class="btn btn-danger">删除</button>'
+        ].join("")
+    }
+    window.operateEvents = {
+        "click #edi":function (e,value,row,index) {
+           /* console.log(row.id);
+            console.log(e);
+            console.log(value);
+            alert(index);*/
+            $("#user_phone").val(row.phone);
+            $("#user_money").val(row.money);
+            alert(row.hasdeposit+"11");
+            if(row.hasdeposit) {
+                $("input[name='inlineRadioOptions']").eq(0).attr("checked",true);
+            }else {
+                $("input[name='inlineRadioOptions']").eq(1).attr("checked", true);
+            }
+            // $(".myRadio").attr("checked",row.hasdeposit);
+            // alert($(".myRadio:checked").val());
+            $("#ediBtn").text("保存");
+            $("#ediBtn").on("click",function(){
+                var user={
+                    "id":row.id,
+                    "phone":$("#user_phone").val(),
+                    "money":$("#user_money").val(),
+                    "hasdeposit":$(".myRadio:checked").val(),
+                }
+                $.ajax({
+                    url:"/updataUser",
+                    method:"POST",
+                    contentType:"application/json;charset=utf-8",
+                    data:JSON.stringify(user),
+                    // contentType:"application/json",
+                    // data:{
+                        // id:row.id,
+                        // phone:$("#user_phone").val(),
+
+                    // },
+                    success:
+                        function () {
+                            $table.bootstrapTable('refresh');
+                        }
+                })
+            });
+            $("#opEdiRowModal").modal();
+        },
+        "click #del":function (e,value,row,index) {
+            $("#warningText").text("是否删除任务： " +row.id + " ?");
+            $("#confirmBtn").text("删除");
+            $("#confirmBtn").on("click",function(){
+
+                $.ajax({
+                    url:"/delUserByThisId",
+                    // contentType:"application/json",
+                    data:{
+                        id:row.id
+                    },
+                    success:
+                        function () {
+                            $table.bootstrapTable('remove', {
+                                field: 'id',
+                                values: [parseInt(row.id)]
+                            });
+                        }
+                })
+            });
+            $("#opDataxJobRowModal").modal();
+
+
+        }
+    }
+    $('#table').bootstrapTable({
+        url: '/getUserList',
+        search:true,
+        pagination: true, //是否显示分页
+        pageSize: 5, //每页的记录行数（*）
+        height: 500,
+        toolbar: '#toolbar',
+        columns: [{
+            field: 'id',
+            title: 'Item ID',
+            sortable:true,
+        }, {
+            field: 'phone',
+            title: 'Item Phone',
+            searchable:false,
+            sortable:true,
+        }, {
+            field: 'money',
+            title: 'Item Money',
+            searchable:false,
+            sortable:true,
+        }, {
+            field: 'hasdeposit',
+            title: 'Item HasDeposit',
+            searchable:false,
+            sortable:true,
+        }, {
+            field: 'myButton',
+            title: 'Item Button',
+            searchable:false,
+            events:operateEvents,
+            formatter:AddFunctionAlty,
+        }, ]
+    });
+    $('#opDataxJobRowModal').on('hidden.bs.modal', function (event) {
+        $("#confirmBtn").unbind();
+    })
+    function newUser(){
+        var user={
+            "wxopenid":$("#user_newPhone").val(),
+            "phone":$("#user_newMoney").val()
+        }
+
+        $.ajax({
+            url:"/addUser",
+            method:"POST",
+            contentType:"application/json;charset=utf-8",
+            data:JSON.stringify(user),
+            success:
+                function () {
+                    // alert("111");
+                        $table.bootstrapTable('refresh');
+                }
+        })
+
+    }
+
+    //---------------------------------------------------
+    /*var $table = $('#table'),
+        $button = $('#button');
+    $(function () {
+        $button.click(function () {
+            var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+                return row.id;
+            });
+            console.log(ids)
+            var json = {ids:ids}
+            $.ajax({
+                url:"/delUserById",
+                dataType:"json",
+                contentType:"application/json",
+                data:"ids="+ids,
+                success:function(res){
+                    if(res){
+                        console.log(res);
+                    }
+                    $table.bootstrapTable('remove', {
+                        field: 'id',
+                        values: ids
+                    });
+                }
+            })
+
+        });
+    });*/
+</script>
+</body>
+</html>

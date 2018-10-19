@@ -1,0 +1,15 @@
+.main{
+	text-align: center;
+	height: 100%;
+	padding-top: 50px;
+}
+p{
+	color: #4F5D73;
+	font-size: 13px;
+	margin:0 auto;
+	width:50%;
+}
+span{
+	margin-right: 15px;
+	padding-left: 10px;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>momo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+	<link href="../css/bootstrap-table.css" rel="stylesheet">
+	<link href="../css/basic.css" rel="stylesheet">
+<link href="../css/journey.css" rel="stylesheet">
+<link rel="shortcut icon" href="./images/logo.ico">
+</head>
+<body>
+<div class="container-fluid">	
+	<div class="row">
+		<div class="col-md-2 myNav">
+			<div class="main-left-col">
+				<div style="text-align: center;">
+					<img class="logo" src="./images/logo1256.png">
+					<h5>某某单车管理系统</h5>
+				</div>
+
+				<ul class="nav nav-pills nav-stacked">
+					<li class="dropdown">
+						<a href="home"><span class="glyphicon glyphicon-home"></span> 首页</a>
+					</li>
+					<li class="dropdown">
+						<a href="user"><span class="glyphicon glyphicon-user"></span>用户管理</a>
+					</li>
+					<li class="dropdown">
+						<a href="bicycle"><span class="glyphicon glyphicon-wrench"></span>单车管理</a>
+					</li>
+					<li class="active">
+						<a href="journey"><span class="glyphicon glyphicon-road"></span>行程管理</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+<!--内容-->
+		<div class="col-md-10 main">
+			<!--<div id="toolbar">-->
+				<!--<button id="button" class="btn btn-default" data-toggle="modal" data-target=".new-example-modal-sm">insertRow</button>-->
+			<!--</div>-->
+			<div class="content" style="">
+				<div>
+					<h1 class="miniTitle" style=""><span class="glyphicon glyphicon-road"></span>行程管理</h1>
+				</div>
+				<hr style="">
+				<div style="" class="tablediv">
+					<table id="table" class="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/bootstrap-table-zh-CN.js"></script>
+<script src="../js/journey.js"></script>
+</body>
+</html>	

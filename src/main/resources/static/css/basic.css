@@ -1,0 +1,83 @@
+/*
+所有的块级标签(html,body,div....)
+高度是auto (随内容增加增加)
+windows>html>body>div>...
+windows有高度 高度就是浏览器高度
+所以
+一个块级元素设为100%  意思是设为他的父类的高度
+ */
+.container-fluid, .row, body, html{
+	height: 100%;
+}
+html{     
+    overflow-x: hidden;     
+    overflow-y: hidden;
+} 
+body{
+	background-color: #dddddd;
+}
+h5{
+	color: #DBDBDB;
+	padding-bottom: 20px;
+}
+.logo{
+	height: 50%;
+	width: 50%;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+li{
+	list-style:none;
+
+}
+.nav > li > a{
+	color: #FFF;
+    display: block;
+    padding: 8px 16px;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+	text-decoration: none;
+    color:#4F5D73;
+    background: #76C2AF;
+}
+.nav-pills > li.active > a:hover{
+	background: #76C2AF;
+	width: 100%;
+}
+.nav-pills > li.active > a{
+	background: #76C2AF;
+	width: 100%;
+}
+.myNav{
+	background: #4F5D73;
+	padding: 0 0;
+	height: 100%;
+}
+span{
+	margin-right: 15px;
+	padding-left: 10px;
+}
+/*--table*/
+.btn{
+	font-size: 13px;
+	height: 100%;
+	padding: 2px 5px;
+}
+strong+.form-control{
+	margin-top: 10px;
+}
+.main{
+	color: #4f5d73
+}
+.content{
+	background:#FFFFFF;border-radius:20px;margin-top: 20px;padding: 10px 0;
+}
+.miniTitle{
+	margin: 0;padding-left:20px;
+}
+.content>hr{
+	margin: 5px;
+}
+.tablediv{
+	width: 80%;margin: auto;
+}

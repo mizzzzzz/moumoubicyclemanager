@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>momo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+	<link href="../css/bootstrap-table.css" rel="stylesheet">
+	<link href="../css/basic.css" rel="stylesheet">
+<link href="../css/bicycle.css" rel="stylesheet">
+<link rel="shortcut icon" href="./images/logo.ico">
+</head>
+<body>
+<div class="container-fluid">	
+	<div class="row">
+		<!--导航栏-->
+		<div class="col-md-2 myNav">
+			<div class="main-left-col">
+				<div style="text-align: center;">
+					<img class="logo" src="./images/logo1256.png">
+					<h5>某某单车管理系统</h5>
+				</div>
+
+				<ul class="nav nav-pills nav-stacked">
+					<li class="dropdown">
+						<a href="home"><span class="glyphicon glyphicon-home"></span> 首页</a>
+					</li>
+					<li class="dropdown">
+						<a href="user"><span class="glyphicon glyphicon-user"></span>用户管理</a>
+					</li>
+					<li class="active">
+						<a href="bicycle"><span class="glyphicon glyphicon-wrench"></span>单车管理</a>
+					</li>
+					<li class="dropdown">
+						<a href="journey"><span class="glyphicon glyphicon-road"></span>行程管理</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+<!--内容-->
+		<div class="col-md-10 main">
+			<div id="toolbar">
+				<button id="button" class="btn btn-default" data-toggle="modal" data-target=".new-example-modal-sm">insertRow</button>
+			</div>
+			<div class="content" style="">
+				<div>
+					<h1 class="miniTitle" style=""><span class="glyphicon glyphicon-wrench"></span>单车管理</h1>
+				</div>
+				<hr style="">
+				<div style="" class="tablediv">
+					<table id="table" class="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--模态框-->
+<div class="modal fade" id="opDataxJobRowModal" tabindex="-1" role="dialog" >
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">警告</h4>
+			</div>
+			<div class="modal-body">
+				<strong id="warningText"></strong>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-danger" id="confirmBtn" data-dismiss="modal"></button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade new-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">新建单车</h4>
+			</div>
+			<div class="modal-body">
+				<div>
+					<strong>单车Mark</strong>
+					<input type="text" class="form-control" id="bicycle_newMark"></input>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-danger" id="newBtn"  onclick="newBicycle();" data-dismiss="modal">新建</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="opEdiRowModal" tabindex="-1" role="dialog" >
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">编辑单车</h4>
+			</div>
+			<div class="modal-body">
+				<!--<div>-->
+					<!--<strong>状态</strong>-->
+					<!--<input type="text" class="form-control" id="bicycle_status"></input>-->
+				<!--</div>-->
+				<div>
+					<strong>状态</strong>
+					<select class="form-control" id="bicycle_status">
+						<option value="1">1：空闲</option>
+						<option value="2">2：使用中</option>
+						<option value="3">3：维修中</option>
+						<option value="4">4：失联</option>
+					</select>
+				</div>
+
+				<!--<hr>-->
+				<!--<div>
+					<strong>押金</strong>
+					<div>
+						<label class="radio-inline">
+							<input type="radio" class="myRadio" name="inlineRadioOptions" id="user_hasDeposit01" value="true"> true
+						</label>
+						<label class="radio-inline">
+							<input type="radio" class="myRadio" name="inlineRadioOptions" id="user_hasDeposit02" value="false"> false
+						</label>
+					</div>
+				</div>-->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-danger" id="ediBtn" data-dismiss="modal"></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/bootstrap-table-zh-CN.js"></script>
+<script src="../js/bicycle.js"></script>
+</body>
+</html>	
